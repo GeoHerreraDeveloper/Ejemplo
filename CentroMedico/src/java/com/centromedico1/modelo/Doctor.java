@@ -22,7 +22,7 @@ public class Doctor extends Personas {
        
     }
 
-    public Doctor(int noColegiado, String usuario, String contraseña, int codEspecialidad, int codPuesto, Integer cui, String pNombre, String pApellido, String sNombre, String sApellido, String genero, Date fechaNacimiento, String direccion, Integer telefono, String email) {
+    public Doctor(int noColegiado, String usuario, String contraseña, int codEspecialidad, int codPuesto, Integer cui, String pNombre, String pApellido, String sNombre, String sApellido, String genero, String fechaNacimiento, String direccion, Integer telefono, String email) {
         super(cui, pNombre, pApellido, sNombre, sApellido, genero, fechaNacimiento, direccion, telefono, email);
         this.noColegiado = noColegiado;
         this.usuario = usuario;

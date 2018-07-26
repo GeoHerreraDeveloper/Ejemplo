@@ -18,7 +18,7 @@ public class Personas {
     protected String sNombre;
     protected String sApellido;
     protected String genero;
-    protected Date fechaNacimiento;
+    protected String fechaNacimiento;
     protected String direccion;
     protected Integer telefono;
     protected String email;
@@ -35,7 +35,7 @@ public class Personas {
         this.telefono = null;
         this.email = null;
     }
-    public Personas(Integer cui, String pNombre, String pApellido, String sNombre, String sApellido, String genero, Date fechaNacimiento, String direccion, Integer telefono, String email) {
+    public Personas(Integer cui, String pNombre, String pApellido, String sNombre, String sApellido, String genero, String fechaNacimiento, String direccion, Integer telefono, String email) {
         this.cui = cui;
         this.pNombre = pNombre;
         this.pApellido = pApellido;
@@ -52,6 +52,7 @@ public class Personas {
     public Integer getCui() {
 		return cui;
 	}
+ 
 	public void setCui(Integer cui) {
 		this.cui = cui;
 	}
@@ -85,10 +86,10 @@ public class Personas {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getDireccion() {

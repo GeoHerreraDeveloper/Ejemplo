@@ -29,7 +29,7 @@ public class SecretariaDAO extends Conexion {
 			ejecutar.setString(4, secretariaN.getsNombre());
 			ejecutar.setString(5, secretariaN.getsApellido());
 			ejecutar.setString(6, secretariaN.getGenero());
-			ejecutar.setDate(7, secretariaN.getFechaNacimiento());
+			ejecutar.setString(7, secretariaN.getFechaNacimiento());
 			ejecutar.setString(8, secretariaN.getDireccion());
 			ejecutar.setInt(9, secretariaN.getTelefono());
 			ejecutar.setString(10, secretariaN.getEmail());
@@ -77,7 +77,7 @@ public class SecretariaDAO extends Conexion {
 				secretariaN.setsNombre(resultado.getString("sNombre"));
 				secretariaN.setsApellido(resultado.getString("sApellido"));
 				secretariaN.setGenero(resultado.getString("genero"));
-				secretariaN.setFechaNacimiento(resultado.getDate("fechaNacimiento"));
+				secretariaN.setFechaNacimiento(resultado.getString("fechaNacimiento"));
 				secretariaN.setDireccion(resultado.getString("direccion"));
 				secretariaN.setTelefono(resultado.getInt("telefono"));
 				secretariaN.setEmail(resultado.getString("email"));
@@ -131,7 +131,7 @@ public class SecretariaDAO extends Conexion {
 			ejecutar.setString(4,  datos.getsNombre());
 			ejecutar.setString(5,  datos.getsApellido());
 			ejecutar.setString(6,  datos.getGenero());
-			ejecutar.setDate(7,  datos.getFechaNacimiento());
+			ejecutar.setString(7,  datos.getFechaNacimiento());
 			ejecutar.setString(8,  datos.getDireccion());
 			ejecutar.setInt(9,  datos.getTelefono());
 			ejecutar.setString(10,  datos.getEmail());
@@ -141,7 +141,7 @@ public class SecretariaDAO extends Conexion {
 			ejecutar.setString(13,  datos.getPass());
 			ejecutar.setInt(14, datos.getCod_Puesto() );
 			
-			respuesta = "Datos modificados con éxito!";
+			respuesta = "Datos modificados con ï¿½xito!";
 					
 		} catch (SQLException ex) {
 			//Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

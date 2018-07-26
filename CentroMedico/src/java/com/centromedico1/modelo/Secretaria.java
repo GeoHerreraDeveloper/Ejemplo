@@ -18,7 +18,7 @@ public class Secretaria extends Personas {
 	
 
 	public Secretaria(Integer cui, String pNombre, String pApellido, String sNombre, String sApellido, String genero,
-			Date fechaNacimiento, String direccion, Integer telefono, String email, Integer cod_Secretaria, String user,
+			String fechaNacimiento, String direccion, Integer telefono, String email, Integer cod_Secretaria, String user,
 			 String pass, Integer cod_Puesto) {
 		super(cui, pNombre, pApellido, sNombre, sApellido, genero, fechaNacimiento, direccion, telefono, email);
 		// TODO Auto-generated constructor stub

@@ -19,7 +19,7 @@ public class Cliente extends Personas{
         this.Cod_cliente=0;
     }
 
-    public Cliente(Integer Cod_cliente, Integer Cui, String pNombre, String pApellido, String sNombre, String sApellido, String Genero, Date FechaNacimiento, String Direccion, Integer Telefono, String Email) {
+    public Cliente(Integer Cod_cliente, Integer Cui, String pNombre, String pApellido, String sNombre, String sApellido, String Genero, String FechaNacimiento, String Direccion, Integer Telefono, String Email) {
         super(Cui, pNombre, pApellido, sNombre, sApellido, Genero, FechaNacimiento, Direccion, Telefono, Email);
         this.Cod_cliente = Cod_cliente;
     }

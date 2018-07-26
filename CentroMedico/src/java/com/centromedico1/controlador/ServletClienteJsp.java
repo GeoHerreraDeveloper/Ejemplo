@@ -5,6 +5,8 @@
  */
 package com.centromedico1.controlador;
 
+import com.centromedico1.dao.ClienteDAO;
+import com.centromedico1.modelo.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usuario
  */
-public class ServletRegistrar extends HttpServlet {
+public class ServletClienteJsp extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,16 +31,31 @@ public class ServletRegistrar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+             Cliente clienten = new Cliente ();
+             ClienteDAO procesosDao = new ClienteDAO (); 
+             String cui = request.getParameter("cui");
+             String pnombre = request.getParameter("pnombre");
+             String snombre = request.getParameter("snombre");
+             String papellido = request.getParameter("papellido");
+             String sapellido = request.getParameter("sapellido");
+             String genero = request.getParameter("genero");
+             String fechaNacimiento= request.getParameter("fecha");
+             String direccion = request.getParameter("direccion");
+             String telefono = request.getParameter("telefono");
+             String email = request.getParameter("email");
+             String codcliente= request.getParameter("codcliente");
+             
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletRegistrar</title>");            
+            out.println("<title>Servlet ServletClienteJsp</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletRegistrar at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletClienteJsp at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

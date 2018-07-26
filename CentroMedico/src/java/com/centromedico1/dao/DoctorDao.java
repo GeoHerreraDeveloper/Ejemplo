@@ -30,7 +30,7 @@ public class DoctorDao extends Conexion{
             ejecutar.setString(4, doctorChapatin.getsNombre());
             ejecutar.setString(5, doctorChapatin.getsApellido());
             ejecutar.setString(6, doctorChapatin.getGenero());
-            ejecutar.setDate(7, doctorChapatin.getFechaNacimiento());
+            ejecutar.setString(7, doctorChapatin.getFechaNacimiento());
             ejecutar.setString(8, doctorChapatin.getDireccion());
             ejecutar.setInt(9, doctorChapatin.getTelefono());
             ejecutar.setString(10, doctorChapatin.getEmail());
@@ -75,7 +75,7 @@ public class DoctorDao extends Conexion{
                 doctor0.setsNombre(resultado.getString("sNombre"));
                 doctor0.setsApellido(resultado.getString("sApellido"));
                 doctor0.setGenero(resultado.getString("genero"));
-                doctor0.setFechaNacimiento(resultado.getDate("fechaNacimiento"));
+                doctor0.setFechaNacimiento(resultado.getString("fechaNacimiento"));
                 doctor0.setDireccion(resultado.getString("direccion"));
                 doctor0.setTelefono(resultado.getInt("telefono"));
                 doctor0.setEmail(resultado.getString("email"));
@@ -128,7 +128,7 @@ public class DoctorDao extends Conexion{
             ejecutar.setString(4, datos.getsNombre());
             ejecutar.setString(5, datos.getsApellido());
             ejecutar.setString(6, datos.getGenero());
-            ejecutar.setDate(7, datos.getFechaNacimiento());
+            ejecutar.setString(7, datos.getFechaNacimiento());
             ejecutar.setString(8, datos.getDireccion());
             ejecutar.setInt(9,  datos.getTelefono());
             ejecutar.setString(10,  datos.getEmail());

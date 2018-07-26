@@ -24,11 +24,11 @@ public class ClienteDAO extends Conexion {
     private String respuesta;
     
     //Agregar nuevo cliente
-    public String registrarCliente(Cliente clientex){
+    public String registrarNuevoCliente(Cliente clientex){
         respuesta=null;
         try {
             this.Conector();
-            sql = "insert into persona values(?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO persona VALUES(?,?,?,?,?,?,?,?,?,?)";
             ejecutar = this.getMiconexion().prepareStatement(sql);
             ejecutar.setInt(1, clientex.getCui());
             ejecutar.setString(2, clientex.getpNombre());
@@ -36,12 +36,13 @@ public class ClienteDAO extends Conexion {
             ejecutar.setString(4, clientex.getsNombre());
             ejecutar.setString(5, clientex.getsApellido());
             ejecutar.setString(6, clientex.getGenero());
-            ejecutar.setDate(7, clientex.getFechaNacimiento());
+            ejecutar.setString(7,clientex.getFechaNacimiento());
             ejecutar.setString(8, clientex.getDireccion());
             ejecutar.setInt(9, clientex.getTelefono());
-            ejecutar.setString(10, clientex.getEmail());
+            ejecutar.setString(10, clientex.getEmail()); 
+            ejecutar.executeUpdate();
             
-            sql = "insert into cliente values(?,?)";
+            sql = "INSERT INTO cliente VALUES(?,?)";
             ejecutar = this.getMiconexion().prepareStatement(sql);
             ejecutar.setInt(1, clientex.getCod_cliente());
             ejecutar.setInt(2, clientex.getCui());
@@ -51,7 +52,7 @@ public class ClienteDAO extends Conexion {
             
         }catch(SQLException ex){
             System.out.println("Error en Statement"+ex);
-            respuesta="No se pudo almacenar el registro";
+            respuesta="No se pudo almacenar el registro"+ex;
         }finally {
             this.cerrarConexion();
         }
@@ -77,7 +78,7 @@ public class ClienteDAO extends Conexion {
                 clientex.setsNombre(resultado.getString("sNombre"));
                 clientex.setsApellido(resultado.getString("sApellido"));
                 clientex.setGenero(resultado.getString("Genero"));
-                clientex.setFechaNacimiento(resultado.getDate("FechaNacimiento"));
+                clientex.setFechaNacimiento(resultado.getString("FechaNacimiento"));
                 clientex.setDireccion(resultado.getString("Direccion"));
                 clientex.setTelefono(resultado.getInt("Telefono"));
                 clientex.setEmail(resultado.getString("Email"));
@@ -102,7 +103,7 @@ public class ClienteDAO extends Conexion {
             ejecutar.setString(3, datos.getsNombre());
             ejecutar.setString(4, datos.getsApellido());
             ejecutar.setString(5, datos.getGenero());
-            ejecutar.setDate(6, datos.getFechaNacimiento());
+            ejecutar.setString(6, datos.getFechaNacimiento());
             ejecutar.setString(7, datos.getDireccion());
             ejecutar.setInt(8, datos.getTelefono());
             ejecutar.setString(9, datos.getEmail());
