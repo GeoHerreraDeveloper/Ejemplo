@@ -25,6 +25,12 @@
         <br/>
         <p:separator/> 
         <h:form id="frmUsuario">
+            <script type="text/javascript">
+                function limpiarForm()
+                {
+                    document.getElementById("frmUsuario").reset();
+                }
+            </script>
             <p:outputLabel for="txtId2" value="Id:"/>
             <br/>
             <p:inputText id="txtId2" value="#{controladorUsuario.usuarioX.id}"/>
@@ -41,7 +47,7 @@
             <br/>
             <p:inputText id="txtPass" value="#{controladorUsuario.usuarioX.contraseña}"/>
             <br/><br/>
-            <p:commandButton actionListener="#{controladorUsuario.registrarUsuario()}" value="Guardar" update=":frmUsuarios2 :tblUsuarios"/>
+            <p:commandButton actionListener="#{controladorUsuario.registrarUsuario()}" value="Guardar" update=":frmUsuarios2 :tblUsuarios" oncomplete="PF('dlgDatosGuardados').show();"/>
         </h:form>
         <p:separator/>   
         <br/>
@@ -66,12 +72,12 @@
                 <p:commandButton actionListener="#{controladorUsuario.buscarIdUsuario(usuario)}" 
                                  value="Mostrar" 
                                  oncomplete="PF('dlgActualizarUsuario').show();" 
-                                 update=":emergenteAct"/>
+                                 update=":emergenteAct1"/>
             </p:column>
         </p:dataTable>
         <br/>
         <p:separator/> 
-        <p:dialog header="Editar Usuario" id="emergenteAct" widgetVar="dlgActualizarUsuario" showEffect="explode" hideEffect="bounce" height="400" width="500">
+        <p:dialog header="Editar Usuario" id="emergenteAct1" widgetVar="dlgActualizarUsuario" showEffect="explode" hideEffect="bounce" height="400" width="500">
             <h:form id="frmActualizarUsuario">
                 <p:outputLabel for="txtIdActU" value="Id:"/>
                 <br/>
@@ -93,6 +99,13 @@
                 <br/><br/>
                 <p:commandButton actionListener="#{controladorUsuario.eliminarUsuario()}" value="Eliminar" update=":tblUsuarios :frmUsuarios2" oncomplete="PF('dlgActualizarUsuario').hide();"/>
             </h:form>
+        </p:dialog>
+        <p:dialog header="Datos guardados" id="emergenteAct" widgetVar="dlgDatosGuardados" showEffect="explode" hideEffect="bounce" height="80" width="300">
+   
+                <p:outputLabel value="Datos Guardados Exitosamente"/>
+                <br/>
+                <p:commandButton  value="Aceptar" oncomplete="PF('dlgDatosGuardados').hide();" onclick="limpiarForm()"/>
+                <br/>
         </p:dialog>
         <div class="ui-g">
             <h:form id="frmUsuarios2">
