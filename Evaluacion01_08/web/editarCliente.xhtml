@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Control de clientes</title>
+    </h:head>
+    <h:body>
+        <f:event type="preRenderView" listener="#{controladorCliente.cargarClientes()}"></f:event>
+        <p:tabMenu activeIndex="#{param.i}">
+            <p:menuitem value="Control de usuarios" outcome="jsfCliente.xhtml" icon="ui-icon-star">
+                <f:param name="i" value="0" />
+            </p:menuitem>
+            <p:menuitem value="Control de clientes" outcome="editarCliente.xhtml" icon="ui-icon-star">
+                <f:param name="i" value="1" />
+            </p:menuitem>
+            <p:menuitem value="Cerrar Sesion" outcome="index.html" icon="ui-icon-star">
+                <f:param name="i" value="2" />
+            </p:menuitem>
+        </p:tabMenu>
+        <br/>
+        <h:form>
+            <p:commandButton actionListener="#{controladorCliente.execute()}"
+                             oncomplete="PF('dlgGuardar').show();" 
+                             value="Nuevo cliente" 
+                             
+                             />
+        </h:form>
+        <br/>
+        <p:separator/> 
+        <h:form id="frmTablaClientes">
+            <p:dataTable var="cliente" value="#{controladorCliente.recibirClientes}" id="tblClientes">
+                <p:column headerText="Id">
+                    <h:outputText value="#{cliente.id}" />
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{cliente.nombre}" />
+                </p:column>
+
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{cliente.apellido}" />
+                </p:column>
+
+                <p:column headerText="Nit">
+                    <h:outputText value="#{cliente.nit}" />
+                </p:column>
+
+                <p:column headerText="Acciones">
+                    <p:commandButton actionListener="#{controladorCliente.buscarCodigocliente(cliente)}" 
+                                     value="Editar" 
+                                     oncomplete="PF('dlgActualizar').show();" 
+                                     update=":emergenteAct"/>
+
+
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <p:dialog header="Editar Cliente" id="emergenteAct" widgetVar="dlgActualizar" showEffect="explode" hideEffect="bounce" height="400" width="500">
+            <h:form id="frmActualizar">
+                <p:outputLabel for="txtIdAct" value="Id:"/>
+                <br/>
+                <p:inputText id="txtIdAct" value="#{controladorCliente.clienteX.id}"/>
+                <br/><br/>
+                <p:outputLabel for="txtNombreAct" value="Nombre:"/>
+                <br/>
+                <p:inputText id="txtNombreAct" value="#{controladorCliente.clienteX.nombre}"/>
+                <br/><br/>
+                <p:outputLabel for="txtApellidoAct" value="Apellido:"/>
+                <br/>
+                <p:inputText id="txtApellidoAct" value="#{controladorCliente.clienteX.apellido}"/>
+                <br/><br/>
+                <p:outputLabel for="txtNitAct" value="Nit:"/>
+                <br/>
+                <p:inputText id="txtNitAct" value="#{controladorCliente.clienteX.nit}"/>
+                <br/><br/>
+                <p:commandButton actionListener="#{controladorCliente.modificarCliente(controladorCliente.clienteX)}" value="Guardar" update=":frmTablaClientes:tblClientes" oncomplete="PF('dlgActualizar').hide();" />
+                <br/><br/>
+                <p:commandButton actionListener="#{controladorCliente.eliminarCliente2()}" value="Eliminar" update=":frmTablaClientes:tblClientes" oncomplete="PF('dlgActualizar').hide();"/>
+            </h:form>
+        </p:dialog>
+        <p:dialog header="Nuevo Cliente" id="emergenteActG" widgetVar="dlgGuardar" showEffect="explode" hideEffect="bounce" height="400" width="500">
+            <h:form id="frmIngreso">
+                <br/>
+                <br/>
+                <p:outputLabel for="txtId" value="Id:" />
+                <br/>
+                <p:inputText id="txtId" value="#{controladorCliente.clienteX.id}"/>
+                <br/>
+                <p:outputLabel for="txtNombre" value="Nombre:"/>
+                <br/>
+                <p:inputText id="txtNombre" value="#{controladorCliente.clienteX.nombre}"/>
+                <br/>
+                <p:outputLabel for="txtApellido" value="Apellido:"/>
+                <br/>
+                <p:inputText id="txtApellido" value="#{controladorCliente.clienteX.apellido}"/>
+                <br/>
+                <p:outputLabel for="txtNit" value="Nit:"/>
+                <br/>
+                <p:inputText id="txtNit" value="#{controladorCliente.clienteX.nit}"/>
+                <br/>
+                <p:remoteCommand name="rc" update="msgs" actionListener="#{controladorCliente.execute()}" />
+                <p:growl id="msgs" showDetail="true" />
+                <p:commandButton actionListener="#{controladorCliente.registrarCliente()}" 
+                                 value="Guardar" 
+                                 oncomplete="rc()"
+                                 onclick="PF('dlgGuardar').hide();"
+                                 update=":frmTablaClientes:tblClientes"/>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
+

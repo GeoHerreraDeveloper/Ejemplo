@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+   
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>ServletNuevoCliente</servlet-name>
+        <servlet-class>com.evaluacion.controlador.ServletNuevoCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletInicio</servlet-name>
+        <servlet-class>com.evaluacion.controlador.ServletInicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEliminar</servlet-name>
+        <servlet-class>com.evaluacion.controlador.ServletEliminar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletActualizar</servlet-name>
+        <servlet-class>com.evaluacion.controlador.ServletActualizar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletNuevoCliente</servlet-name>
+        <url-pattern>/ServletNuevoCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInicio</servlet-name>
+        <url-pattern>/ServletInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEliminar</servlet-name>
+        <url-pattern>/ServletEliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletActualizar</servlet-name>
+        <url-pattern>/ServletActualizar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>
