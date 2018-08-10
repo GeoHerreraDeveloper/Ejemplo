@@ -23,7 +23,7 @@ public class PersonaDAO extends DAO{
         }
     }
     
-    public List<Persona> listar(){
+    public List<Persona> listar() throws Exception{
         List<Persona> lista;
         ResultSet rs;
         try {
@@ -33,10 +33,38 @@ public class PersonaDAO extends DAO{
            lista= new ArrayList();
            while (rs.next()){
                Persona per = new Persona();
+               per.setCodigo(rs.getInt("codigo"));
+               per.setNombre(rs.getString("nombre"));
+               per.setSexo(rs.getString("sexo"));
+               lista.add(per);
            }
         } catch (Exception e) {
+            throw e;
         }finally{
-            
+            this.Cerrar();
         }
+        return lista;
+    }
+    
+    public Persona leerID(Persona per) throws Exception{
+        Persona pers = null;
+        ResultSet rs;
+       try {
+            this.Conectar();
+            PreparedStatement st = this.getCn().prepareStatement("SELECT codigo,nombre,sexo FROM Persona WHERE codigo=?");
+            st.setInt(1, per.getCodigo());
+            rs=st.executeQuery();
+            while (rs.next()){
+                pers = new Persona();
+                pers.setCodigo(rs.getInt("codigo"));
+                pers.setNombre(rs.getString("nombre"));
+                pers.setSexo(rs.getString("sexo"));
+            }
+        } catch (Exception e) {
+            throw e;
+        }finally{
+            this.Cerrar();
+        }
+       return pers;
     }
 }
