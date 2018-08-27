@@ -8,6 +8,7 @@
         <title>Ejemplo Ventas</title>
     </h:head>
     <h:body>
+        <f:event type="preRenderView" listener="#{personaBean.listar()}"></f:event>
         <p:growl id="msj" showDetail="true" autoUpdate="true"/>
         <h:form>
             <p:outputLabel for="txtNombre" value="Nombre: " />
